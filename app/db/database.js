@@ -6,4 +6,4 @@ const bookshelf = require('bookshelf')(knex);
 
 bookshelf.plugin('registry');
 
-module.exports = {knex, bookshelf}
+module.exports = { knex, bookshelf }
