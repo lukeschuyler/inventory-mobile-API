@@ -2,12 +2,12 @@
 
 const { Router } = require('express');
 
-const { getAll, getOne, add } = require('../controllers/productCtrl');
+const { getAll, getOne, addProduct } = require('../controllers/productCtrl');
 
 const router = Router();
 
 router.get('/products', getAll);
 router.get('/products/:id', getOne);
-router.post('/products', add)
+router.post('/products', addProduct)
 
 module.exports = router;
