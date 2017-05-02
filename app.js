@@ -1,12 +1,12 @@
 const express = require('express');
 const path = require('path');
-const { json } = require('body-parser');
+const { json, urlencoded } = require('body-parser');
 const routes = require('./app/routes/');
 
 const app = express();
 
 app.use(json())
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(urlencoded({ extended: false }));
 
 app.use('/api/v1/', routes);
 
@@ -37,7 +37,7 @@ app.use( (err, req, res, next) => {
 
 const port = process.env.PORT || 8082;
 app.listen(port, () => {
-  console.log(`Listening on port ${port} in this super keen env: ${process.env.NODE_ENV}`);
+  console.log(`Listening on port ${port}`);
 });
 
 module.exports = app;
