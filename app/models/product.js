@@ -4,7 +4,7 @@ const { bookshelf } = require('../db/database')
 // require('./zoneMd')
 // require('./trainerMd')
 
-const Animal = bookshelf.Model.extend({
+const Product = bookshelf.Model.extend({
   tableName: 'products',
   // zone() { return this.belongsTo('Zone')},
   // trainer: function() { return this.belongsTo('Trainer')}
@@ -21,8 +21,8 @@ const Animal = bookshelf.Model.extend({
     .then(product => product)
     .catch(error => error)
   },
-  addProduct(newAnimal) {
-    return this.forge(newAnimal)
+  addProduct(newProduct) {
+    return this.forge(newProduct)
     .save()
     .then(product => product)
     .catch(error => error)
@@ -33,12 +33,12 @@ const Animal = bookshelf.Model.extend({
     .then(product => product)
     .catch(error => error)
   },
-  editProduct(id, animalEdits) {
+  editProduct(id, edits) {
     return this.where({id})
-    .save(animalEdits, {method: 'update'})
+    .save(edits, {method: 'update'})
     .then(product => product)
     .catch(error => error)
   }
 })
 
-module.exports = bookshelf.model("Animal", Animal)
+module.exports = bookshelf.model('Product', Product)
