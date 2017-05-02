@@ -9,6 +9,9 @@
     "start": "nodemon ./app.js",
     "deploy": "git push heroku master",
   },
+  "engines": { 
+    "node": "7.5.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lukeschuyler/inventory-mobile-API.git"
