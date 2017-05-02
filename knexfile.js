@@ -16,7 +16,6 @@ module.exports = {
   },
   development: {
     client: 'pg',
-    debug: true,
     connection: {
       database: 'inventory'
     },

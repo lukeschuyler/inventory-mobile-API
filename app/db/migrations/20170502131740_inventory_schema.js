@@ -1,6 +1,7 @@
 
 exports.up = (knex, Promise) => {
-  return knex.schema.createTable('products', (table) => {
+  return knex.schema
+  .createTable('products', (table) => {
     table.increments();
     table.bigInteger('upc_code').unsigned().notNullable().unique();
     table.string('name').notNullable();
@@ -13,20 +14,26 @@ exports.up = (knex, Promise) => {
     table.timestamp('date').notNullable().defaultTo(knex.fn.now())
     table.string('username')
   })
-  .createTable('directors', (table) => {
+  .createTable('i_session_line_items', (table) => {
     table.increments()
-    table.string('name').notNullable().unique()
-    table.string('gender').notNullable()
-    table.integer('birthYear')
-    table.string('twitterHandle')
+    table.integer('product_id').unsigned().references('products.id')
+    table.integer('session_id').unsigned().references('inventory_sessions.id')
   })
-  .createTable('shows_directors', (table) => {
+  .createTable('waste_sessions', (table) => {
+    table.increments();
+    table.timestamp('date').notNullable().defaultTo(knex.fn.now())
+    table.string('username')
+  })
+  .createTable('w_session_line_items', (table) => {
     table.increments()
-    table.integer('director_id').unsigned().references('directors.id')
-    table.integer('show_id').unsigned().references('shows.id')
+    table.integer('product_id').unsigned().references('products.id')
+    table.integer('session_id').unsigned().references('waste_sessions.id')
   })
 };
 
-exports.down = (knex, Promise) => {
-  
-};
+exports.down = (knex, Promise) => knex.schema
+  .dropTable('i_session_line_items')
+  .dropTable('w_session_line_items')
+  .dropTable('products')
+  .dropTable('inventory_sessions')
+  .dropTable('waste_sessions');
