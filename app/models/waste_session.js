@@ -3,9 +3,9 @@
 const { bookshelf } = require('../db/database')
 require('./waste_line_item')
 
-const InvSession = bookshelf.Model.extend({
-  tableName: 'inventory_sessions',
-  inv_line_items() { return this.hasMany('InvLineItems')}
+const WasteSession = bookshelf.Model.extend({
+  tableName: 'waste_sessions',
+  line_items() { return this.hasMany('WasteLineItems')}
 }, {
   getAll() {
     return this.forge()
@@ -14,7 +14,7 @@ const InvSession = bookshelf.Model.extend({
     .catch(error => error)
   },
   getOne(id) {
-    return this.forge({upc_code: id})
+    return this.forge({id})
     .fetch()
     .then(session => session)
     .catch(error => error)
@@ -39,4 +39,4 @@ const InvSession = bookshelf.Model.extend({
   }
 })
 
-module.exports = bookshelf.model('InvSession', InvSession)
+module.exports = bookshelf.model('WasteSession', WasteSession)

@@ -5,7 +5,7 @@ require('./product')
 
 const WasteLineItem = bookshelf.Model.extend({
   tableName: 'w_session_line_items',
-  product() { return this.belongsTo('Product')},
+  product() { return this.belongsTo('Product') },
 }, {
   getAll() {
     return this.forge()

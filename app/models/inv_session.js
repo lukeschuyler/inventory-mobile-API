@@ -5,7 +5,7 @@ require('./inv_line_item')
 
 const InvSession = bookshelf.Model.extend({
   tableName: 'inventory_sessions',
-  inv_line_items() { return this.hasMany('InvLineItems')}
+  line_items() { return this.hasMany('InvLineItems')}
 }, {
   getAll() {
     return this.forge()
@@ -14,7 +14,7 @@ const InvSession = bookshelf.Model.extend({
     .catch(error => error)
   },
   getOne(id) {
-    return this.forge({upc_code: id})
+    return this.forge({id})
     .fetch()
     .then(session => session)
     .catch(error => error)
