@@ -5,6 +5,7 @@ exports.up = (knex, Promise) => {
     table.increments();
     table.bigInteger('upc_code').unsigned().notNullable().unique();
     table.string('name').notNullable();
+    table.string('measure').notNullable();
     table.string('image');
     table.string('description', 1000).notNullable();
     table.integer('popularity');
@@ -18,6 +19,7 @@ exports.up = (knex, Promise) => {
     table.increments()
     table.integer('product_id').unsigned().references('products.id')
     table.integer('session_id').unsigned().references('inventory_sessions.id')
+    table.integer('quantity').notNullable();
   })
   .createTable('waste_sessions', (table) => {
     table.increments();
@@ -28,6 +30,7 @@ exports.up = (knex, Promise) => {
     table.increments()
     table.integer('product_id').unsigned().references('products.id')
     table.integer('session_id').unsigned().references('waste_sessions.id')
+    table.integer('quantity').notNullable();
   })
 };
 
