@@ -2,7 +2,7 @@
 
 const { Router } = require('express');
 
-const { getAll, getOne, addItem } = require('../controllers/waste_line-itemCtrl');
+const { getAll, getOne, addItem } = require('../controllers/waste_line_itemCtrl');
 
 const router = Router();
 
