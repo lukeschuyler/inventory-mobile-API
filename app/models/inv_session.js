@@ -5,11 +5,12 @@ require('./inv_line_item')
 
 const InvSession = bookshelf.Model.extend({
   tableName: 'inventory_sessions',
-  line_items() { return this.hasMany('InvLineItems')}
+  // line_items() { return this.hasOne('InvLineItem')},
+  products() { return this.hasMany('Product').through('InvLineItem') }
 }, {
   getAll() {
     return this.forge()
-    .fetchAll()
+    .fetchAll({withRelated: ['products'], require: true})
     .then(sessions => sessions)
     .catch(error => error)
   },

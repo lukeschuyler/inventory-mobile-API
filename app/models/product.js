@@ -1,17 +1,19 @@
 'use strict'
 
 const { bookshelf } = require('../db/database')
-// require('./zoneMd')
-// require('./trainerMd')
+require('./inv_session')
+require('./inv_line_item')
+require('./waste_session')
+require('./waste_line_item')
 
 const Product = bookshelf.Model.extend({
   tableName: 'products',
-  // zone() { return this.belongsTo('Zone')},
-  // trainer: function() { return this.belongsTo('Trainer')}
+  invSession() { return this.belongsToMany('InvSession').through('InvLineItem') },
+  wasteSession() { return this.belongsToMany('WasteSession').through('WasteLineItem') }
 }, {
   getAll() {
     return this.forge()
-    .fetchAll()
+    .fetchAll({withRelated: ['invSession', 'wasteSession'], require: true})
     .then(products => products)
     .catch(error => error)
   },
