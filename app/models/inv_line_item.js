@@ -6,12 +6,12 @@ require('./inv_session')
 
 const InvLineItem = bookshelf.Model.extend({
   tableName: 'i_session_line_items',
-  product() { return this.hasOne('Product')},
-  session() { return this.belongsToMany('InvSession') }
+  product: function() { return this.belongsTo('Product') },
+  session: function() { return this.belongsTo('InvSession') }
 }, {
   getAll() {
     return this.forge()
-    .fetchAll({withRelated: ['session'], require: true})
+    .fetchAll({withRelated: ['product', 'session'], require: true})
     .then(items => items)
     .catch(error => error)
   },

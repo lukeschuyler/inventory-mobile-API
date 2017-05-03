@@ -8,12 +8,12 @@ require('./waste_line_item')
 
 const Product = bookshelf.Model.extend({
   tableName: 'products',
-  invSession() { return this.belongsToMany('InvSession').through('InvLineItem') },
-  wasteSession() { return this.belongsToMany('WasteSession').through('WasteLineItem') }
+  wasteSession: function() { return this.belongsToMany('WasteSession').through('WasteLineItem') },
+  invSession: function() { return this.belongsToMany('InvSession').through('InvLineItem') }
 }, {
   getAll() {
-    return this.forge()
-    .fetchAll({withRelated: ['invSession', 'wasteSession'], require: true})
+    return this.forge({withRelated: ['wasteSession', 'invSession'], require: true})
+    .fetchAll()
     .then(products => products)
     .catch(error => error)
   },

@@ -2,11 +2,11 @@
 
 const { bookshelf } = require('../db/database')
 require('./inv_line_item')
+require('./product')
 
 const InvSession = bookshelf.Model.extend({
   tableName: 'inventory_sessions',
-  // line_items() { return this.hasOne('InvLineItem')},
-  products() { return this.hasMany('Product').through('InvLineItem') }
+  products: function() { return this.belongsToMany('Product').through('InvLineItem') }
 }, {
   getAll() {
     return this.forge()

@@ -2,11 +2,11 @@
 
 const { bookshelf } = require('../db/database')
 require('./waste_line_item')
+require('./product')
 
 const WasteSession = bookshelf.Model.extend({
   tableName: 'waste_sessions',
-  // line_items() { return this.hasMany('WasteLineItem') },
-  products: function() { return this.hasMany('Product').through('WasteLineItem') }
+  products: function() { return this.belongsToMany('Product').through('WasteLineItem') }
 }, {
   getAll() {
     return this.forge()
