@@ -2,10 +2,12 @@
 
 const { bookshelf } = require('../db/database')
 require('./product')
+require('./waste_session')
 
 const WasteLineItem = bookshelf.Model.extend({
   tableName: 'w_session_line_items',
-  product() { return this.belongsTo('Product') },
+  product: function() { return this.hasOne('Product') },
+  session: function() { return this.hasOne('WasteSession') }
 }, {
   getAll() {
     return this.forge()

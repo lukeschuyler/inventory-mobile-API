@@ -2,14 +2,15 @@
 
 const { bookshelf } = require('../db/database')
 require('./waste_line_item')
+require('./product')
 
 const WasteSession = bookshelf.Model.extend({
   tableName: 'waste_sessions',
-  line_items() { return this.hasMany('WasteLineItems')}
+  products: function() { return this.belongsToMany('Product').through('WasteLineItem') }
 }, {
   getAll() {
     return this.forge()
-    .fetchAll()
+    .fetchAll({withRelated: ['products'], require: true})
     .then(sessions => sessions)
     .catch(error => error)
   },

@@ -18,7 +18,7 @@ exports.up = (knex, Promise) => {
   .createTable('i_session_line_items', (table) => {
     table.increments()
     table.integer('product_id').unsigned().references('products.id')
-    table.integer('session_id').unsigned().references('inventory_sessions.id')
+    table.integer('inventory_session_id').unsigned().references('inventory_sessions.id')
     table.integer('quantity').notNullable();
   })
   .createTable('waste_sessions', (table) => {
@@ -29,7 +29,7 @@ exports.up = (knex, Promise) => {
   .createTable('w_session_line_items', (table) => {
     table.increments()
     table.integer('product_id').unsigned().references('products.id')
-    table.integer('session_id').unsigned().references('waste_sessions.id')
+    table.integer('waste_session_id').unsigned().references('waste_sessions.id')
     table.integer('quantity').notNullable();
   })
 };
