@@ -11,7 +11,9 @@ module.exports.getAll = (req, res, next) => {
 
 module.exports.getOne = ({ params: {id} }, res, next) => {
   Product.getOne(id)
-  .then(product => res.status(200).json(product))
+  .then(product => {
+    res.status(200).json(product)
+  })
   .catch(error => next(error))
 }
 
