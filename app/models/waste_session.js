@@ -16,7 +16,7 @@ const WasteSession = bookshelf.Model.extend({
   },
   getOne(id) {
     return this.forge({id})
-    .fetch()
+    .fetch({withRelated: ['products'], require: true})
     .then(session => session)
     .catch(error => error)
   },
