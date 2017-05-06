@@ -20,7 +20,10 @@ const Product = bookshelf.Model.extend({
   getOne(id) {
     return this.forge({upc_code: id})
     .fetch()
-    .then(product => product)
+    .then(product => {
+      // console.log(product)
+      return product
+    })
     .catch(error => error)
   },
   addProduct(newProduct) {

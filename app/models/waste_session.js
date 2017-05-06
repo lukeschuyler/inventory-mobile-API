@@ -27,6 +27,7 @@ const WasteSession = bookshelf.Model.extend({
     .catch(error => error)
   },
   deleteSession(id) {
+    console.log(id)
     return this.forge({id})
     .destroy()
     .then(session => session)
