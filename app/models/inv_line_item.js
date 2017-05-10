@@ -15,6 +15,12 @@ const InvLineItem = bookshelf.Model.extend({
     .then(items => items)
     .catch(error => error)
   },
+  getAllBySession(inventory_session_id) {
+    return this.where({inventory_session_id})
+    .fetchAll({withRelated: ['product']})
+    .then(items => items)
+    .catch(error => error)
+  },
   getOne(id) {
     return this.forge({id})
     .fetch()

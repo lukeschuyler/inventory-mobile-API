@@ -9,6 +9,12 @@ module.exports.getAll = (req, res, next) => {
   .catch(error => next(error))
 }
 
+module.exports.getAllBySession = ({ params: {inventory_session_id} }, res, next) => {
+  InvLineItem.getAllBySession(inventory_session_id)
+  .then(items => res.status(200).json(items))
+  .catch(error => next(error))
+}
+
 module.exports.getOne = ({ params: {id} }, res, next) => {
   InvLineItem.getOne(id)
   .then(item => res.status(200).json(item))

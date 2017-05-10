@@ -12,7 +12,7 @@ const Product = bookshelf.Model.extend({
   invSession: function() { return this.belongsToMany('InvSession').through('InvLineItem') }
 }, {
   getAll() {
-    return this.forge({withRelated: ['wasteSession', 'invSession'], require: true})
+    return this.forge()
     .fetchAll()
     .then(products => products)
     .catch(error => error)
@@ -21,7 +21,6 @@ const Product = bookshelf.Model.extend({
     return this.forge({upc_code: id})
     .fetch()
     .then(product => {
-      // console.log(product)
       return product
     })
     .catch(error => error)

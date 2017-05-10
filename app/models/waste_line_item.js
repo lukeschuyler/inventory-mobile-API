@@ -15,6 +15,12 @@ const WasteLineItem = bookshelf.Model.extend({
     .then(items => items)
     .catch(error => error)
   },
+  getAllBySession(waste_session_id) {
+    return this.where({waste_session_id})
+    .fetchAll({withRelated: ['product'], require: true})
+    .then(items => items)
+    .catch(error => error)
+  },
   getOne(id) {
     return this.forge({id})
     .fetch()
