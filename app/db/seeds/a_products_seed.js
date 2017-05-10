@@ -42,7 +42,7 @@ exports.seed = (knex, Promise) => {
           upc_code: 099428829946,
           name: 'Cauliflower',
           measure: 'LB',
-          image: 'http://nutrawiki.org/wp-content/uploads/2015/09/Cauliflower.jpg',
+          image: 'https://nutrawiki.org/wp-content/uploads/2015/09/Cauliflower.jpg',
           description: 'Single-origin coffee echo park lumbersexual listicle vexillologist pok pok marfa, flexitarian selfies man braid photo booth distillery. Glossier ennui tumeric, literally helvetica williamsburg aesthetic banh mi before they sold out fam knausgaard slow-carb. Williamsburg enamel pin master cleanse +1 unicorn. Waistcoat pitchfork fashion axe, vexillologist coloring book irony tumblr photo booth hoodie flannel. Bushwick kale chips hexagon cornhole. Microdosing butcher flannel pitchfork readymade. Meggings sriracha venmo, tote bag banjo tousled austin polaroid affogato.',
           price: '4.99',
           popularity: 4
