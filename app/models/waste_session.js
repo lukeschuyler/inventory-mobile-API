@@ -6,7 +6,8 @@ require('./product')
 
 const WasteSession = bookshelf.Model.extend({
   tableName: 'waste_sessions',
-  products: function() { return this.belongsToMany('Product').through('WasteLineItem') }
+  products: function() { return this.belongsToMany('Product').through('WasteLineItem') },
+  items: function() { return this.hasMany('WasteLineItem') }
 }, {
   getAll() {
     return this.forge()
@@ -16,7 +17,7 @@ const WasteSession = bookshelf.Model.extend({
   },
   getOne(id) {
     return this.forge({id})
-    .fetch({withRelated: ['products'], require: true})
+    .fetch({withRelated: ['products', 'items'], require: true})
     .then(session => session)
     .catch(error => error)
   },
