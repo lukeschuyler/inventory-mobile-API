@@ -20,7 +20,7 @@ exports.up = (knex, Promise) => {
     table.increments()
     table.integer('product_id').unsigned().references('products.id')
     table.integer('inventory_session_id').unsigned().references('inventory_sessions.id')
-    table.integer('quantity').notNullable();
+    table.decimal('quantity').notNullable();
   })
   .createTable('waste_sessions', (table) => {
     table.increments();
@@ -31,7 +31,7 @@ exports.up = (knex, Promise) => {
     table.increments()
     table.integer('product_id').unsigned().references('products.id')
     table.integer('waste_session_id').unsigned().references('waste_sessions.id')
-    table.integer('quantity').notNullable();
+    table.decimal('quantity').notNullable();
   })
 };
 
