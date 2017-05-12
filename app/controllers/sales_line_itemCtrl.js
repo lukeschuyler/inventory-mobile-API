@@ -4,7 +4,7 @@ const { bookshelf } = require('../db/database')
 const SalesLineItem = require('../models/sales_line_item')
 
 module.exports.getAll = (req, res, next) => {
-  SalesLineItem.getAll()
+  returnSalesLineItem.getAll()
   .then(items => res.status(200).json(items))
   .catch(error => next(error))
 }
