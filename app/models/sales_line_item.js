@@ -5,7 +5,7 @@ require('./product')
 require('./sales_session')
 
 const SalesLineItem = bookshelf.Model.extend({
-  tableName: 'r_session_line_items',
+  tableName: 's_session_line_items',
   product: function() { return this.belongsTo('Product') },
   session: function() { return this.belongsTo('SalesSession') }
 }, {

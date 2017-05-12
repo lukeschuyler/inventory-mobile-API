@@ -1,22 +1,10 @@
-const Product = require('./product')
-const WasteSession = require('./waste_session.js')
-const WasteLineItem = require('./waste_line_item.js')
+const RecLineItem = require('./rec_line_item.js')
 
-// Product.fetchAll({withRelated: ['wasteSession']})
-// .then(products => {
-//   console.log(products.toJSON())
-// })
-// .catch(err => console.log(err))
+const data = {   product_id: 2,
+          receiving_session_id: 3,
+          quantity: 20 }
 
-// WasteSession.deleteSession(4)
-// .then(res => {
-//   console.log('res', res)
-// })
-// .catch(err => {
-//   console.log(err.message)
-// })
-
-WasteLineItem.getAllBySession(2)
+RecLineItem.addItem(data)
 .then(res => {
   console.log(res.toJSON())
 })
