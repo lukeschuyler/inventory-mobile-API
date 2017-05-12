@@ -8,7 +8,7 @@ const router = Router();
 
 router.get('/sales_line_items', getAll);
 router.get('/sales_line_items/:id', getOne);
-router.get('/sales_line_items/from/:salesentory_session_id', getAllBySession);
+router.get('/sales_line_items/from/:sales_session_id', getAllBySession);
 router.post('/sales_line_items', addItem)
 router.delete('/sales_line_items/:id', deleteItem)
 router.patch('/sales_line_items', editItem)

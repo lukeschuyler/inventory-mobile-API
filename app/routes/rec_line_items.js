@@ -8,7 +8,7 @@ const router = Router();
 
 router.get('/rec_line_items', getAll);
 router.get('/rec_line_items/:id', getOne);
-router.get('/rec_line_items/from/:recentory_session_id', getAllBySession);
+router.get('/rec_line_items/from/:rec_session_id', getAllBySession);
 router.post('/rec_line_items', addItem)
 router.delete('/rec_line_items/:id', deleteItem)
 router.patch('/rec_line_items', editItem)

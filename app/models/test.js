@@ -1,10 +1,10 @@
-const RecSession = require('./rec_session.js')
+const SalesLineItem = require('./sales_line_item.js')
 
-const data = {   product_id: 2,
-          receiving_session_id: 3,
-          quantity: 20 }
+// const data = {   product_id: 2,
+//           receiving_session_id: 3,
+//           quantity: 20 }
 
-RecSession.addSession({username: 'lukeschuyler'})
+SalesLineItem.getAllBySession(1)
 .then(res => {
   console.log(res.toJSON())
 })
