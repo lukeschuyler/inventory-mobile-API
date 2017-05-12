@@ -33,11 +33,37 @@ exports.up = (knex, Promise) => {
     table.integer('waste_session_id').unsigned().references('waste_sessions.id')
     table.decimal('quantity').notNullable();
   })
+  .createTable('sale_sessions', (table) => {
+    table.increments();
+    table.timestamp('date').notNullable().defaultTo(knex.fn.now())
+    table.string('username')
+  })
+  .createTable('s_session_line_items', (table) => {
+    table.increments()
+    table.integer('product_id').unsigned().references('products.id')
+    table.integer('sales_session_id').unsigned().references('sales_sessions.id')
+    table.decimal('quantity').notNullable();
+  })
+  .createTable('receiving_sessions', (table) => {
+    table.increments();
+    table.timestamp('date').notNullable().defaultTo(knex.fn.now())
+    table.string('username')
+  })
+  .createTable('r_session_line_items', (table) => {
+    table.increments()
+    table.integer('product_id').unsigned().references('products.id')
+    table.integer('receiving_session_id').unsigned().references('receiving_sessions.id')
+    table.decimal('quantity').notNullable();
+  })
 };
 
 exports.down = (knex, Promise) => knex.schema
   .dropTable('i_session_line_items')
   .dropTable('w_session_line_items')
+  .dropTable('s_session_line_items')
+  .dropTable('o_session_line_items')
   .dropTable('products')
   .dropTable('inventory_sessions')
   .dropTable('waste_sessions');
+  .dropTable('sales_sessions')
+  .dropTable('receiving_sessions');
