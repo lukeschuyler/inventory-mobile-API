@@ -60,10 +60,10 @@ exports.up = (knex, Promise) => {
 exports.down = (knex, Promise) => knex.schema
   .dropTable('i_session_line_items')
   .dropTable('w_session_line_items')
-  .dropTable('s_session_line_items')
-  .dropTable('r_session_line_items')
+  // .dropTable('s_session_line_items')
+  // .dropTable('r_session_line_items')
   .dropTable('products')
   .dropTable('inventory_sessions')
   .dropTable('waste_sessions')
-  .dropTable('sales_sessions')
-  .dropTable('receiving_sessions');
+  // .dropTable('sales_sessions')
+  // .dropTable('receiving_sessions');
