@@ -12,5 +12,6 @@ router.use(require('./sales_sessions'))
 router.use(require('./sales_line_items'))
 router.use(require('./rec_sessions'))
 router.use(require('./rec_line_items'))
+router.use(require('./all'))
 
 module.exports = router;
