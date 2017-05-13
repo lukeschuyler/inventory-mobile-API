@@ -5,12 +5,19 @@ require('./inv_session')
 require('./inv_line_item')
 require('./waste_session')
 require('./waste_line_item')
+require('./rec_session')
+require('./rec_line_item')
+require('./sales_session')
+require('./sales_line_item')
 
 const Product = bookshelf.Model.extend({
   tableName: 'products',
   wasteSession: function() { return this.belongsToMany('WasteSession').through('WasteLineItem') },
-  invSession: function() { return this.belongsToMany('InvSession').through('InvLineItem') }
+  invSession: function() { return this.belongsToMany('InvSession').through('InvLineItem') },
+  salesSession: function() { return this.belongsToMany('WasteSession').through('WasteLineItem') },
+  recSession: function() { return this.belongsToMany('InvSession').through('InvLineItem') }
 }, {
+  dependents: []
   getAll() {
     return this.forge()
     .fetchAll()
