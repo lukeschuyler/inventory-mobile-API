@@ -14,10 +14,10 @@ const Product = bookshelf.Model.extend({
   tableName: 'products',
   wasteSession: function() { return this.belongsToMany('WasteSession').through('WasteLineItem') },
   invSession: function() { return this.belongsToMany('InvSession').through('InvLineItem') },
-  salesSession: function() { return this.belongsToMany('WasteSession').through('WasteLineItem') },
-  recSession: function() { return this.belongsToMany('InvSession').through('InvLineItem') }
+  salesSession: function() { return this.belongsToMany('SalesSession').through('SalesLineItem') },
+  recSession: function() { return this.belongsToMany('RecSession').through('RecLineItem') }
 }, {
-  dependents: []
+  dependents: ['wasteSession', 'invSession', 'salesSession', 'recSession'],
   getAll() {
     return this.forge()
     .fetchAll()
