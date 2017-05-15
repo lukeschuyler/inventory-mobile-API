@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/lukeschuyler/inventory-mobile-API#readme",
   "dependencies": {
+    "amazon-product-api": "^0.4.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
     "bookshelf": "^0.10.3",
