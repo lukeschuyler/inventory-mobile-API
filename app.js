@@ -15,7 +15,6 @@ app.use(urlencoded({ extended: false }));
 app.use('/api/v1/', routes);
 
 app.use((req, res, next) => {
-  // console.log(req.body)
   const err = new Error('404 Not Found');
   err.status = 404;
   next(err);
