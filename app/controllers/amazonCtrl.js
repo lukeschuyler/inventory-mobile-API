@@ -6,5 +6,13 @@ var client = amazon.createClient({
 });
 
 module.exports.search = (req, res, next) => {
-  
+  client.itemSearch({
+    Keywords: req.body.query,
+    ResponseGroup: 'Images, ItemAttributes'
+  })
+  .then(results => {
+    console.log(res)
+     res.status(200).json(results)
+  })
+  .catch(err => next(err));
 }
