@@ -6,19 +6,26 @@ var client = amazon.createClient({
 });
 
 module.exports.search = (req, res, next) => {
+  console.log(req.body.query)
   client.itemSearch({
     Keywords: req.body.query,
     ResponseGroup: 'Images, ItemAttributes'
   })
   .then(results => {
     let searchResults = []
-    results.forEach(result => {
+    results.forEach((result, i) => {
       let searchProduct = {}
       searchProduct.name = result.ItemAttributes[0].Title[0];
 
-      searchProduct.link = result.DetailPageURL[0];
-      searchProduct.ASIN = result.ASIN[0];
-      searchProduct.UPC = result.ItemAttributes[0].UPC[0]
+      if (result.DetailPageURL[0]) {
+        searchProduct.link = result.DetailPageURL[0];
+      } else {
+        searchProduct.link = 'No URL'
+      }
+
+      result.ASIN[0] ? searchProduct.ASIN = result.ASIN[0] : searchProduct.ASIN = 'No ASIN'
+
+      result.ItemAttributes[0].UPC ? searchProduct.UPC = result.ItemAttributes[0].UPC[0] : searchProduct.UPC = 'No UPC'
 
       if(result.ImageSets) {
         searchProduct.image = result.ImageSets[0].ImageSet[0].LargeImage[0].URL[0];
@@ -37,8 +44,8 @@ module.exports.search = (req, res, next) => {
       } else {
         searchProduct.price = 'No Price Available'
       }
+
       searchResults.push(searchProduct)
-      console.log(searchResults)
     })
      res.status(200).json(searchResults)
   })
