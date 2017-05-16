@@ -8,8 +8,7 @@ var client = amazon.createClient({
 module.exports.search = (req, res, next) => {
   client.itemSearch({
     Keywords: req.body.query,
-    ResponseGroup: 'Images, ItemAttributes',
-    MinimumPrice: 1
+    ResponseGroup: 'Images, ItemAttributes'
   })
   .then(results => {
     let searchResults = []
