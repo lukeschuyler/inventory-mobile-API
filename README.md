@@ -16,5 +16,7 @@ This API was written to directly communicate with Simply Managed Mobile as well 
 1. NodeJS and Express
 2. PostgreSQL 
 3. Bookshelf/Knex O.R.M.'s
+4. Body-parser
+5. Cors
 
 
