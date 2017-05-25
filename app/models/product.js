@@ -25,7 +25,7 @@ const Product = bookshelf.Model.extend({
     .catch(error => error)
   },
   getAllCurrent() {
-    return this.where({stock: 'in'})
+    return this.where({active: 'y'})
     .fetchAll()
     .then(products => products)
     .catch(error => error)
@@ -46,7 +46,7 @@ const Product = bookshelf.Model.extend({
   },
   deleteProduct(id) {
     return this.where({id})
-    .save({stock: 'out'}, {method: 'update'})
+    .save({active: 'n'}, {method: 'update'})
     .then(product => product)
     .catch(error => error)
   },
