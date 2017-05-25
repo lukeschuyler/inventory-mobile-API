@@ -22,6 +22,10 @@ const Product = require('./product.js')
 // })
 
 Product.getCurrentQty(4)
+.then(res => res.toJSON().current_qty)
+.then(qty => {
+  Product.updateQty(4, {current_qty: qty + })
+})
 .then(res => {
-  console.log(res.toJSON().current_qty)
+  console.log(res.toJSON())
 })
