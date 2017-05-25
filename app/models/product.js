@@ -24,6 +24,12 @@ const Product = bookshelf.Model.extend({
     .then(products => products)
     .catch(error => error)
   },
+  getAllCurrent() {
+    return this.where({stock: 'in'})
+    .fetchAll()
+    .then(products => products)
+    .catch(error => error)
+  },
   getOne(id) {
     return this.forge({upc_code: id})
     .fetch()
