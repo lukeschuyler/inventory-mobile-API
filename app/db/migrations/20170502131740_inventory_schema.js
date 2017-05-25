@@ -10,6 +10,8 @@ exports.up = (knex, Promise) => {
     table.string('description', 1000).notNullable();
     table.string('price').notNullable();
     table.integer('popularity');
+    table.integer('current_qty').notNullable();
+    table.string('stock').notNullable();
   })
   .createTable('inventory_sessions', (table) => {
     table.increments();
