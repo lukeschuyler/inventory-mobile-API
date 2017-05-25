@@ -45,8 +45,8 @@ const Product = bookshelf.Model.extend({
     .catch(error => error)
   },
   deleteProduct(id) {
-    return this.forge({id})
-    .destroy()
+    return this.where({id})
+    .save({stock: 'out'}, {method: 'update'})
     .then(product => product)
     .catch(error => error)
   },
