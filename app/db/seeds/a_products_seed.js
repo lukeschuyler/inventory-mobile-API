@@ -10,8 +10,9 @@ exports.seed = (knex, Promise) => {
           description: 'Single-origin coffee echo park lumbersexual listicle vexillologist pok pok marfa, flexitarian selfies man braid photo booth distillery. Glossier ennui tumeric, literally helvetica williamsburg aesthetic banh mi before they sold out fam knausgaard slow-carb. Williamsburg enamel pin master cleanse +1 unicorn. Waistcoat pitchfork fashion axe, vexillologist coloring book irony tumblr photo booth hoodie flannel. Bushwick kale chips hexagon cornhole. Microdosing butcher flannel pitchfork readymade. Meggings sriracha venmo, tote bag banjo tousled austin polaroid affogato.',
           price: '3.49',
           popularity: 8,
-          current_qty: 6,
-          stock: 'out'
+          current_qty: 0,
+          stock: 'out',
+          active: 'n'
         }),
         knex('products').insert({
           upc_code: 099428829943,
@@ -22,7 +23,8 @@ exports.seed = (knex, Promise) => {
           price: '8.99',
           popularity: 10,
           current_qty: 4,
-          stock: 'in'
+          stock: 'in',
+          active: 'y'
         }),
         knex('products').insert({
           upc_code: 099428829944,
@@ -33,7 +35,8 @@ exports.seed = (knex, Promise) => {
           price: '7.49',
           popularity: 6,
           current_qty: 10,
-          stock: 'out'
+          stock: 'in',
+          active: 'y'
         }),
         knex('products').insert({
           upc_code: 099428829945,
@@ -44,7 +47,8 @@ exports.seed = (knex, Promise) => {
           price: '2.99',
           popularity: 9,
           current_qty: 3,
-          stock: 'in'
+          stock: 'in',
+          active: 'y'
         }),
         knex('products').insert({
           upc_code: 099428829946,
@@ -55,7 +59,8 @@ exports.seed = (knex, Promise) => {
           price: '4.99',
           popularity: 4,
           current_qty: 13,
-          stock: 'out'
+          stock: 'in',
+          active: 'y'
         }),
         knex('products').insert({
           upc_code: 47495112900,
@@ -66,7 +71,8 @@ exports.seed = (knex, Promise) => {
           price: '1.49',
           popularity: 7,
           current_qty: 16,
-          stock: 'in'
+          stock: 'in',
+          active: 'y'
         })
       ]);
     });
