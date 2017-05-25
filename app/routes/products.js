@@ -6,7 +6,7 @@ const { getAll, getAllCurrent, getOne, addProduct, deleteProduct, editProduct } 
 
 const router = Router();
 
-router.get('/all_products', getAll);
+router.get('/products/all', getAll);
 router.get('/products', getAllCurrent);
 router.get('/products/:id', getOne);
 router.post('/products', addProduct)

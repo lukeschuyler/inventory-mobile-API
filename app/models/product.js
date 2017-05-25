@@ -30,6 +30,14 @@ const Product = bookshelf.Model.extend({
     .then(products => products)
     .catch(error => error)
   },
+  getCurrentQty(id) {
+    return this.forge({id})
+    .fetch()
+    .then(product => {
+      return product
+    })
+    .catch(error => error)
+  },
   getOne(id) {
     return this.forge({upc_code: id})
     .fetch()
