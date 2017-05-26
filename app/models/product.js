@@ -24,6 +24,12 @@ const Product = bookshelf.Model.extend({
     .then(products => products)
     .catch(error => error)
   },
+  getAllCurrent() {
+    return this.where({active: 'y'})
+    .fetchAll()
+    .then(products => products)
+    .catch(error => error)
+  },
   getOne(id) {
     return this.forge({upc_code: id})
     .fetch()
@@ -39,8 +45,8 @@ const Product = bookshelf.Model.extend({
     .catch(error => error)
   },
   deleteProduct(id) {
-    return this.forge({id})
-    .destroy()
+    return this.where({id})
+    .save({active: 'n'}, {method: 'update'})
     .then(product => product)
     .catch(error => error)
   },

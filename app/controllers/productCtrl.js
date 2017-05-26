@@ -9,6 +9,12 @@ module.exports.getAll = (req, res, next) => {
   .catch(error => next(error))
 }
 
+module.exports.getAllCurrent = (req, res, next) => {
+  Product.getAllCurrent()
+  .then(products => res.status(200).json(products))
+  .catch(error => next(error))
+}
+
 module.exports.getOne = ({ params: {id} }, res, next) => {
   Product.getOne(id)
   .then(product => {
