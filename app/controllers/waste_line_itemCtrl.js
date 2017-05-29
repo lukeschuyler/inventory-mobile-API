@@ -23,7 +23,10 @@ module.exports.getOne = ({ params: {id} }, res, next) => {
 }
 
 module.exports.addItem = ({body}, res, next) => {
-  WasteLineItem.addItem(body)
+  WasteLineItem.addItem(body.lineItem)
+  .then(res => {
+   return Product.editProduct(body.lineItem.product_id, {current_qty: (body.lineItem.quantity + body.qty)})
+  })
   .then(item => res.status(200).json(item))
   .catch(error => next(error))
 }
