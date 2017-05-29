@@ -38,6 +38,14 @@ const Product = bookshelf.Model.extend({
     })
     .catch(error => error)
   },
+  getOneById(id) {
+    return this.forge({id})
+      .fetch()
+      .then(product => {
+        return product
+      })
+      .catch(error => error)
+  },
   addProduct(newProduct) {
     return this.forge(newProduct)
     .save()
