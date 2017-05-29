@@ -24,6 +24,9 @@ module.exports.getOne = ({ params: {id} }, res, next) => {
 
 module.exports.addItem = ({body}, res, next) => {
   RecLineItem.addItem(body)
+  .then(res => {
+   return Product.editProduct(body.lineItem.product_id, {current_qty: (body.qty + body.lineItem.quantity)})
+  })
   .then(item => res.status(200).json(item))
   .catch(error => next(error))
 }

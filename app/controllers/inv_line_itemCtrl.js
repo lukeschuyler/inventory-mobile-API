@@ -22,7 +22,7 @@ module.exports.getOne = ({ params: {id} }, res, next) => {
 }
 
 module.exports.addItem = ({body}, res, next) => {
-  InvLineItem.addItem(body)
+  InvLineItem.addItem(body.lineItem)
   .then(item => res.status(200).json(item))
   .catch(error => next(error))
 }
