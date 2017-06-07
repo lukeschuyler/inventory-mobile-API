@@ -25,8 +25,6 @@ module.exports.getOne = ({ params: {id} }, res, next) => {
 module.exports.addItem = ({body}, res, next) => {
   let newQuantity = body.qty + body.lineItem.quantity
   newQuantity < 0 ? newQuantity = 0 : newQuantity = newQuantity
-  console.log(body.qty, 'body.qty')
-  console.log(newQuantity, 'nQ')
   RecLineItem.addItem(body)
   .then(res => {
    return Product.editProduct(body.lineItem.product_id, {current_qty: newQuantity})
