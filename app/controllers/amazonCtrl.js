@@ -11,6 +11,7 @@ module.exports.search = (req, res, next) => {
     ResponseGroup: 'Images, ItemAttributes'
   })
   .then(results => {
+    console.log("result: " + result);
     let searchResults = []
     results.forEach((result, i) => {
       let searchProduct = {}
@@ -46,6 +47,7 @@ module.exports.search = (req, res, next) => {
 
       searchResults.push(searchProduct)
     })
+    console.log("searchResults " + searchResults);
      res.status(200).json(searchResults)
   })
   .catch(err => next(err));
