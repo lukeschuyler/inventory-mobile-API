@@ -50,5 +50,8 @@ module.exports.search = (req, res, next) => {
     console.log("searchResults " + searchResults);
      res.status(200).json(searchResults)
   })
-  .catch(err => next(err));
+  .catch(err => {
+    console.log(err)
+    return next(err)
+  });
 }
