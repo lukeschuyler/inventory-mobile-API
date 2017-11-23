@@ -1,4 +1,5 @@
 const amazon = require('amazon-product-api');
+
 var client = amazon.createClient({
   awsId: process.env.API_KEY,
   awsSecret: process.env.API_SECRET,
@@ -51,7 +52,7 @@ module.exports.search = (req, res, next) => {
      res.status(200).json(searchResults)
   })
   .catch(err => {
-    console.log(JSON.stringify(err));
+    console.log("CATCH: ", JSON.stringify(err));
     return next(err)
   });
 }
